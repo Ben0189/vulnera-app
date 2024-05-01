@@ -1,9 +1,15 @@
 
+
 const Home = () => {
   return (
-    <div>
-      Page
-    </div>
+    <>
+    <section className="w-full flex-center flex-col">
+      <h1 className="head_text text-center">
+        Content here
+      </h1>
+    </section>
+    </>
+
   )
 }
 

@@ -1,5 +1,7 @@
 import '@styles/globals.css';
 import { ReactNode } from 'react';
+import Navbar from '@components/Navbar';
+
 
 export const metadata = {
   title : "Vulnera-App",
@@ -17,6 +19,7 @@ const RootLayout : React.FC<RootLayoutProps> = ({children}) => {
         <div className="main">
           <div className='gradient'></div>
         </div>
+        <Navbar></Navbar>
 
         <main className='app'>
           {children}
