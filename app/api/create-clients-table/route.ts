@@ -1,13 +1,8 @@
+import { Client } from '@models/entity/Client';
 import { sql } from '@vercel/postgres';
 import { NextResponse } from 'next/server';
 
 // Define the Client interface
-interface Client {
-  name: string;
-  email: string;
-  contact: number;
-  revenue: number;
-}
 
 // Payload data
 const clientList: Client[] = [
@@ -28,6 +23,8 @@ const clientList: Client[] = [
 // Function to create the client table and seed it with data
 export async function createClientTable() {
   try {
+    //TODO : Check if you can create again if the table already exist
+
     // Create the client table
     await sql`CREATE TABLE Clients ( 
         Name varchar(255), 

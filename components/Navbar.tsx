@@ -25,10 +25,10 @@ const Navbar = () => {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Vulnera App
           </Typography>
-          <Link href="/clients" passHref>
+          <Link href="/pages/clients" passHref>
             <Button color="inherit">Clients</Button>
           </Link>
-          <Link href="/leads" passHref>
+          <Link href="/pages/leads" passHref>
             <Button color="inherit">Leads</Button>
           </Link>
           <Button color="inherit">Login</Button>
