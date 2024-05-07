@@ -1,20 +1,6 @@
-// getAllClients.ts
-
-import { Client } from '@models/entity/Client';
-import { sql } from '@vercel/postgres';
 import { NextResponse } from 'next/server';
+import { getAllClients } from './get-all-clients';
 
-// Function to get all clients from the database
-export async function getAllClients() {
-  try {
-    // Fetch all clients from the Clients table
-    const clients = await sql<Client[]>`SELECT * FROM Clients;`;
-    
-    return { success: true, clients };
-  } catch (error) {
-    return { success: false, error: error };
-  }
-}
 
 // Endpoint to get all clients
 export async function GET(request: Request) {
