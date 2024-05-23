@@ -7,8 +7,11 @@ import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import Link from 'next/link';
+import { signIn, signOut, useSession } from 'next-auth/react';
 
 const Navbar = () => {
+  const { data: session } = useSession()
+
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -31,7 +34,17 @@ const Navbar = () => {
           <Link href="/pages/leads" passHref>
             <Button color="inherit">Leads</Button>
           </Link>
-          <Button color="inherit">Login</Button>
+          <div className='ml-auto flex gap-2'>
+            {session?.user ? (
+              <>
+                <p className='text-sky-600'>{session.user.name}</p>
+                <button className='text-red-500' onClick={()=> signOut()}>Sign Out</button>
+              </>
+            ) : (
+              <Button color="inherit" onClick={()=> signIn()}>SignIn</Button>
+            )
+            }
+          </div>
         </Toolbar>
       </AppBar>
     </Box>
