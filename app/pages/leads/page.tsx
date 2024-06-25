@@ -2,6 +2,7 @@ import LeadListTable from '@components/LeadListTable';
 import { LeadListDTO } from '@models/LeadListDTO';
 import React from 'react'
 
+//TODO : Gold plating remove dummt lead to use endpoint from database
 const dummyLeads: LeadListDTO[] = [
   {
       name: "John Doe",

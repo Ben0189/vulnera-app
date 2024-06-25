@@ -6,7 +6,7 @@ interface Project  {
     budget: number;
     companyName: string;
     description : string;
-  }
+}
 
 // Function to get all clients from the database
 export async function getAllProject(){

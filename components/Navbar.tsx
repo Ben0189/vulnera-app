@@ -28,11 +28,15 @@ const Navbar = () => {
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             Vulnera App
           </Typography>
+{/* //TODO: Gold plating investigate if routing can be improve into maintainable routing by loop instead of hardcoded */}
           <Link href="/pages/clients" passHref>
             <Button color="inherit">Clients</Button>
           </Link>
           <Link href="/pages/leads" passHref>
             <Button color="inherit">Leads</Button>
+          </Link>
+          <Link href="/pages/projects" passHref>
+            <Button color="inherit">Projects</Button>
           </Link>
           <div className='ml-auto flex gap-2'>
             {session?.user ? (
