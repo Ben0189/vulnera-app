@@ -1,10 +1,10 @@
 "use client";
 
-import React, { useEffect, useState } from 'react'
-import { ProjectListDTO } from '@models/ProjectListDTO';
 import ProjectListTable from '@components/ProjectListTable';
+import { ProjectListDTO } from '@models/ProjectListDTO';
 import Button from '@mui/material/Button';
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
 
 const Project = () => {
   const [projectList, setProjectList] = useState<ProjectListDTO[]>([]);
@@ -28,17 +28,15 @@ const Project = () => {
   }, []);
 
   return (
-     <>
-        <div className='flex justify-between'>
-            <h1 className="head_text">
-                Project List
-            </h1>
-            <Link className='self-center' href="/pages/forms/project-form" passHref>
-              <Button variant="contained">Add Project</Button>
-            </Link>
-        </div>
-      <ProjectListTable rows={projectList}></ProjectListTable>
-     </>
-  )
-}
+    <>
+      <div className='flex justify-between'>
+        <h1 className="head_text">Project List</h1>
+        <Link className='self-center' href="/pages/forms/project-form" passHref>
+          <Button variant="contained">Add Project</Button>
+        </Link>
+      </div>
+      <ProjectListTable rows={projectList} />
+    </>
+  );
+} 
 export default Project

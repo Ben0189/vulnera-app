@@ -1,14 +1,15 @@
 //TODO : Gold plating combine all table list component into dynamic table by passing param into table for different page table
 
-import * as React from 'react';
+import { ProjectListDTO } from '@models/ProjectListDTO';
+import Paper from '@mui/material/Paper';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
-import { ProjectListDTO } from '@models/ProjectListDTO';
+import InnerHTML from 'dangerously-set-html-content';
+
 
 interface ProjectTableProps {
   rows: ProjectListDTO[];
@@ -37,8 +38,9 @@ export default function BasicTable({rows}: ProjectTableProps) {
               </TableCell>
               <TableCell >{row.companyName}</TableCell>
               <TableCell >{row.budget}</TableCell>
-              <TableCell >{row.description}</TableCell>
-              {/* dangerouslySetInnerHTML={{ __html: "<script>alert('Hello! I am an alert box!');</script>"}} */}
+              <TableCell>    
+                <InnerHTML html={row.description} />
+              </TableCell> 
             </TableRow>
           ))}
         </TableBody>
@@ -46,3 +48,4 @@ export default function BasicTable({rows}: ProjectTableProps) {
     </TableContainer>
   );
 }
+
