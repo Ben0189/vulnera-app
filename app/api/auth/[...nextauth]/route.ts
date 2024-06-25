@@ -2,14 +2,6 @@ import pool from "@app/mysql-database/database";
 import NextAuth, { NextAuthOptions } from "next-auth"
 import CredentialsProvider from "next-auth/providers/credentials";
 
-const tempUser = {
-  id: 1,
-  name: "John Doe",
-  email: "john@example.com",
-  username: "john",
-  password: "password123" // In a real application, use hashed passwords
-};
-
 export const authOptions: NextAuthOptions = {
   // Configure one or more authentication providers
   providers: [
@@ -32,60 +24,32 @@ export const authOptions: NextAuthOptions = {
         const { username, password } = credentials;
 
         try {
-          // const result = await pool.query('SELECT * FROM Users WHERE name = ? AND email = ?', [username, password]);
-          // const result = await pool.query('SELECT * FROM Users where name = "something" OR 1=1 -- AND email = ?', [username, password]);
-          const query = `SELECT * FROM Users WHERE name = ${username} AND email = ${password}`;
+          //" or 1=1#
+          const query = `SELECT * FROM Users WHERE name = "${username}" AND email = '${password}'`;
           console.log('Vulnerable Query:', query);
 
           // Execute the vulnerable query
-          const result : any = await pool.query(query);
+          const result = await pool.query(query);
           
-          // Log the result to debug
-          console.log('Result', result);
+          const users = result[0] as any;
 
-          // Access the first client object from the result rows
-          const client = result[0] as any; // Type assertion to any or specific type if defined
+          console.log("User Result", users)
+
+          if(users.length === 0)
+          {
+            console.log("Authentication failed: No user found with the given username and password.");
+            return null;
+          }
 
           return {
-            id: client.id,
-            name: client.name,
-            email: client.email,
+            id: users.id,
+            name: users.name,
+            email: users.email,
           };
         } catch (error) {
           console.log('Unhandled error', error);
           return null;
         }
-        
-        // try {
-        //   let result;
-
-        //   if (username.includes("'' OR 1=1 --")) {
-        //     result = await sql`SELECT * FROM Clients WHERE Name = '' OR 1=1 -- AND Email = ''`;
-        //     console.log("Warning your login is vulnerable to sql injection")
-        //   } else {
-        //     result = await sql`SELECT * FROM Clients WHERE name = ${username} AND email = ${password}`;
-        //   }
-
-
-        //   console.log("Query executed successfully. Data:", result.rows);
-
-        //   // Check if any rows were returned
-        //   if (result.rows.length === 0) {
-        //     console.log("Authentication failed: No user found with the given username and password.");
-        //     return null;
-        //   }
-        //   // Access the first client object from the result rows
-        //   const client = result.rows[0];
-
-        //   return {
-        //     id: "Not Implemented",
-        //     name: client.name,
-        //     email: client.email
-        //   };
-        // } catch (error) {
-        //   console.log("Unhandled error", error);
-        //   return null; // Proper error handling
-        // }
 
       }
     })
@@ -102,4 +66,3 @@ export const authOptions: NextAuthOptions = {
 
 const handler = NextAuth(authOptions)
 export { handler as GET, handler as POST }
-
