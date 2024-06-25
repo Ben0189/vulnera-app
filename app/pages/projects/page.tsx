@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react'
 import { ProjectListDTO } from '@models/ProjectListDTO';
 import ProjectListTable from '@components/ProjectListTable';
 import Button from '@mui/material/Button';
+import Link from 'next/link';
 
 const Project = () => {
   const [projectList, setProjectList] = useState<ProjectListDTO[]>([]);
@@ -28,13 +29,16 @@ const Project = () => {
 
   return (
      <>
-      <h1 className="head_text">
-        Project List
-      </h1>
-      <Button variant="outlined">Add Project</Button>
+        <div className='flex justify-between'>
+            <h1 className="head_text">
+                Project List
+            </h1>
+            <Link className='self-center' href="/pages/forms/project-form" passHref>
+              <Button variant="contained">Add Project</Button>
+            </Link>
+        </div>
       <ProjectListTable rows={projectList}></ProjectListTable>
      </>
   )
 }
-
 export default Project
