@@ -1,36 +1,39 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Vulnerability Demonstration Application
 
-## Getting Started
+## Overview
+This application is designed to demonstrate software vulnerabilities for the UTS software penetration testing course. The tool is aimed at helping lecturers showcase different types of vulnerabilities and their potential impacts, making the learning experience more interactive and practical.
 
-First, run the development server:
+## Features
+Lecturer Demonstrations: Currently supports demonstrations of several common vulnerabilities (XXS, SQL injection).
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## Vulnerabilities
+The application currently covers or plans to cover the following vulnerabilities:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- XSS (Cross-Site Scripting)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+![image](https://github.com/Ben0189/vulnera-app/assets/87377903/72b2c3fb-fdbf-43ff-bd15-d6de137e874a)
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+- SQL Injection
 
-## Learn More
+![image](https://github.com/Ben0189/vulnera-app/assets/87377903/2f759e57-9812-4563-bb08-8c5b662e5eab)
 
-To learn more about Next.js, take a look at the following resources:
+- Password Cracking (incoming)
+- and more (planned)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Prototype
+Current Prototype only able to demonstarte by repository owner on local environment. See contact below if demonstartion needed😊 
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Current Application UI 
+![image](https://github.com/Ben0189/vulnera-app/assets/87377903/1ef09b8e-cf24-46ce-9190-4598caa3ea27)
 
-## Deploy on Vercel
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Future Development
+Additional Vulnerabilities: Adding more types of vulnerabilities for comprehensive coverage.
+Interactive Features: Allowing students to interact with the application for hands-on learning.
+Enhanced User Interface: Improving the UI for better usability and engagement.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Motivation
+This project aims to enhance the educational experience for students in the software penetration testing course at UTS. By making the course content more interactive and practical, we hope to better prepare students for real-world scenarios.
+
+## Contact
+If you have any questions, suggestions, or feedback, please feel free to contact me at [Benjamin.K.Neoh@student.uts.edu.au].
