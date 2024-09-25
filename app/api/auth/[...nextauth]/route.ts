@@ -25,7 +25,7 @@ export const authOptions: NextAuthOptions = {
 
         try {
           //" or 1=1#
-          const query = `SELECT * FROM Users WHERE name = "${username}" AND email = '${password}'`;
+          const query = `SELECT * FROM Clients WHERE name = "${username}" AND email = '${password}'`;
           console.log('Vulnerable Query:', query);
 
           // Execute the vulnerable query

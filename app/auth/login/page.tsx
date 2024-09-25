@@ -40,7 +40,7 @@ const page = () => {
                             required
                             fullWidth
                             id="email"
-                            type="email"
+                            type="text"
                             label="Email Address"
                             name="email"
                             autoFocus

@@ -1,5 +1,5 @@
+import pool from '@app/mysql-database/database';
 import { Client } from '@models/entity/Client';
-import { sql } from '@vercel/postgres';
 
 
 // Define the Client interface
@@ -26,17 +26,21 @@ const clientList: Client[] = [
       //TODO : Check if you can create again if the table already exist
   
       // Create the client table
-      await sql`CREATE TABLE Clients ( 
-          Name varchar(255), 
-          Email varchar(255), 
-          Contact bigint, 
-          Revenue bigint 
-          );`;
+      // await pool.query(`CREATE TABLE Clients ( 
+      //     Name varchar(255), 
+      //     Email varchar(255), 
+      //     Contact bigint, 
+      //     Revenue bigint 
+      //     );`)
   
       // Seed the client table with data
+      // Seed the client table with data
       for (const client of clientList) {
-        await sql`INSERT INTO Clients (Name, Email, Contact, Revenue) VALUES (${client.name}, ${client.email}, ${client.contact}, ${client.revenue});`;
-      }
+        await pool.query(
+          `INSERT INTO Clients (Name, Email, Contact, Revenue) VALUES (?, ?, ?, ?)`,
+          [client.name, client.email, client.contact, client.revenue]
+        );
+}
   
       return { success: true, message: 'Client table created and seeded successfully.' };
     } catch (error) {
