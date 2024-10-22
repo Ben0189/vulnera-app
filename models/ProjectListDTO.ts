@@ -1,6 +1,6 @@
 export interface ProjectListDTO  {
-    name: string;
-    budget: number;
-    companyName: string;
-    description : string;
+    Name: string;
+    Budget: number;
+    CompanyName: string;
+    Description : string;
 }
