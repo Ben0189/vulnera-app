@@ -2,7 +2,6 @@
 import { createClientTable } from "./create-clients-table";
 import { NextResponse } from "next/server";
 
-
 // Endpoint to create the client table and seed it with data
 export async function POST(request: Request) {
   try {
