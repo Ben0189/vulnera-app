@@ -13,6 +13,7 @@ interface ClientTableProps {
 }
 
 export default function BasicTable({rows}: ClientTableProps) {
+
   return ( 
     <TableContainer component={Paper}>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
@@ -25,17 +26,17 @@ export default function BasicTable({rows}: ClientTableProps) {
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
+          {rows?.map((row) => (
             <TableRow
-              key={row.name}
+              key={row.Name}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
               <TableCell component="th" scope="row">
-                {row.name}
+                {row.Name}
               </TableCell>
-              <TableCell >{row.email}</TableCell>
-              <TableCell >{row.contact}</TableCell>
-              <TableCell >{row.revenue}</TableCell>
+              <TableCell >{row.Email}</TableCell>
+              <TableCell >{row.Contact}</TableCell>
+              <TableCell >{row.Revenue}</TableCell>
             </TableRow>
           ))}
         </TableBody>
