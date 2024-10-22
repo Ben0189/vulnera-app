@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef } from 'react'
+import React, { useState } from 'react';
 import {
     Box,
     Button,
@@ -13,75 +13,86 @@ import {
 } from '@mui/material';
 import { signIn } from 'next-auth/react';
 
-const page = () => {
-    const userName = useRef("");
-    const pass = useRef("");
+const Page = () => {
+    // State to hold the input values
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
 
+    const onSubmit = async (e : any) => {
+        e.preventDefault(); // Prevent default form submission
 
-    const onSubmit = async () => {
-        const result = await signIn("credentials",{
-            username: userName.current,
-            password: pass.current,
-            redirect:true,
+        console.log("Submitting form...");
+
+        const result = await signIn("credentials", {
+            username,
+            password,
+            redirect: false, // Set redirect to false to get the result back
             callbackUrl: "/"
-        })
+        });
+
+        console.log("Sign In Result:", result); // Log the result of the sign-in attempt
+        if (result?.error) {
+            console.error("Authentication error:", result.error);
+        } else {
+            // Redirect or do something else on success
+            window.location.href = result?.url || "/";
+        }
     };
 
     return (
-        <>
-            <Container component="main" maxWidth="xs">
-                <Box>
-                    <Typography component="h1" variant="h5">
+        <Container component="main" maxWidth="xs">
+            <Box>
+                <Typography component="h1" variant="h5">
+                    Sign In
+                </Typography>
+                <Box component="form" onSubmit={onSubmit}> {/* Attach onSubmit handler here */}
+                    <TextField
+                        margin="normal"
+                        required
+                        fullWidth
+                        id="username"
+                        type="text"
+                        label="Username"
+                        name="username" // Change this to match the key used in signIn
+                        autoFocus
+                        value={username} // Bind state to the input
+                        onChange={(e) => setUsername(e.target.value)} // Update state on change
+                    />
+                    <TextField
+                        margin="normal"
+                        required
+                        fullWidth
+                        name="password"
+                        label="Password"
+                        type="password"
+                        id="password"
+                        value={password} // Bind state to the input
+                        onChange={(e) => setPassword(e.target.value)} // Update state on change
+                    />
+                    <FormControlLabel
+                        control={<Checkbox value="remember" color="primary" />}
+                        label="Remember me"
+                    />
+                    <Button
+                        type="submit" // This should trigger form submission
+                        fullWidth
+                        variant="contained"
+                        sx={{ mt: 3, mb: 2 }}
+                    >
                         Sign In
-                    </Typography>
-                    <Box component="form">
-                        <TextField
-                            margin="normal"
-                            required
-                            fullWidth
-                            id="email"
-                            type="text"
-                            label="Email Address"
-                            name="email"
-                            autoFocus
-                            onChange={(e)=>{userName.current = e.target.value}}
-                        />
-                        <TextField
-                            margin="normal"
-                            required
-                            fullWidth
-                            name="password"
-                            label="Password"
-                            type="password"
-                            id="password"
-                            onChange={(e)=>{pass.current = e.target.value}}
-                        />
-                        <FormControlLabel
-                            control={<Checkbox value="remember" color="primary" />}
-                            label="Remember me"
-                        />
-                        <Button
-                            type="submit"
-                            fullWidth
-                            variant="contained"
-                            sx={{ mt: 3, mb: 2 }}
-                            onClick={onSubmit}
-                        >
-                            Sign In
-                        </Button>
-                        <Grid>
-                            <Link href="">Forgot password?</Link>
-                        </Grid>
-                        <Grid className="footer">
-                            <Typography component="h5">
-                                Don't have an account? <Link href="">Sign Up</Link>
-                            </Typography>
-                        </Grid>
-                    </Box>
+                    </Button>
+                    <Grid>
+                        <Link href="">Forgot password?</Link>
+                    </Grid>
+                    <Grid className="footer">
+                        <Typography component="h5">
+                            Dont have an account? <Link href="">Sign Up</Link>
+                        </Typography>
+                    </Grid>
                 </Box>
-            </Container>
-        </>
-    )
+            </Box>
+        </Container>
+    );
 }
 
-export default page
+export default Page; // Updated component name
