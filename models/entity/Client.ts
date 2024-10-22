@@ -4,5 +4,6 @@ export interface Client {
     name: string;
     email: string;
     contact: number;
+    creditCardNumber : number;
     revenue: number;
   }  
