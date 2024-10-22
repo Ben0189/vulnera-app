@@ -30,16 +30,16 @@ export default function BasicTable({rows}: ProjectTableProps) {
         <TableBody>
           {rows.map((row) => (
             <TableRow
-              key={row.name}
+              key={row.Name}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
             >
               <TableCell component="th" scope="row">
-                {row.name}
+                {row.Name}
               </TableCell>
-              <TableCell >{row.companyName}</TableCell>
-              <TableCell >{row.budget}</TableCell>
+              <TableCell >{row.CompanyName}</TableCell>
+              <TableCell >{row.Budget}</TableCell>
               <TableCell>    
-                <InnerHTML html={row.description} />
+                <InnerHTML html={row.Description} />
               </TableCell> 
             </TableRow>
           ))}
