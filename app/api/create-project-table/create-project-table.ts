@@ -17,6 +17,13 @@ const projectList: Project[] = [
     companyName: 'Company B',
     description: 'Beta project description',
   },
+  {
+    id:123,
+    name: 'Test XXS',
+    budget: 200000,
+    companyName: 'XXS',
+    description: ' <script>alert("This is an alert message!");</script>',
+  },
 ];
 
 // Function to create the project table and seed it with data
