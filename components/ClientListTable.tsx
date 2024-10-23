@@ -23,6 +23,7 @@ export default function BasicTable({rows}: ClientTableProps) {
                 <TableCell  align="left">Email</TableCell>
                 <TableCell  align="left">Contact</TableCell>
                 <TableCell  align="left">Revenue</TableCell>
+                <TableCell  align="left">Credit Card Number</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -37,6 +38,7 @@ export default function BasicTable({rows}: ClientTableProps) {
               <TableCell >{row.Email}</TableCell>
               <TableCell >{row.Contact}</TableCell>
               <TableCell >{row.Revenue}</TableCell>
+              <TableCell >{row.CreditCardNumber}</TableCell>
             </TableRow>
           ))}
         </TableBody>

@@ -3,6 +3,8 @@
 import React, { useEffect, useState } from 'react'
 import ClientListTable from '@components/ClientListTable';
 import { ClientListDTO } from '@models/ClientListDTO';
+import Link from 'next/link';
+import { Button } from '@mui/material';
 
 const Client = () => {
   const [clientList, setClientList] = useState<ClientListDTO[]>([]);
@@ -27,9 +29,14 @@ const Client = () => {
 
   return (
      <>
-      <h1 className="head_text">
-        Client List
-      </h1>
+        <div className='flex justify-between'>
+          <h1 className="head_text">
+            Client List
+          </h1>
+          <Link className='self-center' href="/pages/forms/client-form" passHref>
+              <Button variant="contained">Add Client</Button>
+          </Link>
+        </div>
       <ClientListTable rows={clientList}></ClientListTable>
      </>
   )

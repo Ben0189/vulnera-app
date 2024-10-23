@@ -3,4 +3,5 @@ export interface ClientListDTO {
     Email: string;
     Contact: number;
     Revenue : number;
+    CreditCardNumber : number;
   }
