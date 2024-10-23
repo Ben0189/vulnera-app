@@ -1,5 +1,7 @@
 import pool from '@app/mysql-database/database';
 import { Client } from '@models/entity/Client';
+import { encryptSymmetric } from '../add-clients/add-client';
+import crypto from 'crypto';
 
 // Payload data for seeding
 const clientList: Client[] = [
@@ -22,7 +24,7 @@ const clientList: Client[] = [
 // Function to create the client table and seed it with data
 export async function createClientTable() {
     try {
-        // Create the client table
+        // Create the client table with encryption-related fields
         await pool.query(`
             CREATE TABLE IF NOT EXISTS Clients (
                 Id INT AUTO_INCREMENT PRIMARY KEY,
@@ -30,15 +32,22 @@ export async function createClientTable() {
                 Email VARCHAR(255),
                 Contact BIGINT,
                 Revenue BIGINT,
-                CreditCardNumber BIGINT
+                CreditCardNumber TEXT,  -- Store ciphertext (encrypted credit card number)
+                IV VARCHAR(24),          -- Store Initialization Vector (IV)
+                AuthTag VARCHAR(24)      -- Store Authentication Tag
             );
         `);
 
-        // Seed the client table with data
+        // Seed the client table with encrypted data
         for (const client of clientList) {
+            // Encrypt the credit card number before seeding
+            const encryptionKey = process.env.ENCRYPTION_KEY || crypto.randomBytes(32).toString('base64');
+            const { ciphertext, iv, tag } = encryptSymmetric(encryptionKey, client.creditCardNumber.toString());
+
+            // Insert the client with encrypted credit card number, IV, and AuthTag
             await pool.query(
-                `INSERT INTO Clients (Name, Email, Contact, Revenue, CreditCardNumber) VALUES (?, ?, ?, ?, ?)`,
-                [client.name, client.email, client.contact, client.revenue, client.creditCardNumber]
+                `INSERT INTO Clients (Name, Email, Contact, Revenue, CreditCardNumber, IV, AuthTag) VALUES (?, ?, ?, ?, ?, ?, ?)`,
+                [client.name, client.email, client.contact, client.revenue, ciphertext, iv, tag.toString('base64')]
             );
         }
 
