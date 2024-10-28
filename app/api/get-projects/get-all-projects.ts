@@ -1,5 +1,4 @@
 import pool from '@app/mysql-database/database';
-//TODO : move interface to shared folder 
 export interface Project  {
     id: number;
     name: string;

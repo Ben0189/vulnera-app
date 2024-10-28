@@ -39,12 +39,13 @@ export async function getAllClients() {
 
       // Decrypt credit card number for each client
       const decryptedClients = (rows as any[]).map(client => {
-          console.log('Fetched Client:', client);
 
           if (!client.CreditCardNumber || !client.IV || !client.AuthTag) {
               console.warn(`Client ${client.Id} is missing encryption data.`);
               return client;  // Skip decryption if any data is missing
           }
+
+          console.log("👋🏻 Before Decrypt = " , client.CreditCardNumber)
 
           const decryptedCreditCardNumber = decryptSymmetric(
               encryptionKey,
@@ -52,6 +53,8 @@ export async function getAllClients() {
               client.IV,                // Initialization Vector
               client.AuthTag            // Authentication Tag
           );
+
+          console.log("👋🏻 After Decrypt = " , decryptedCreditCardNumber)
 
           // Return the client object with the decrypted credit card number
           return {

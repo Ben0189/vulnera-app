@@ -24,9 +24,9 @@ export async function addClient(client: Client) {
         // Encrypt the credit card number
         const { ciphertext, iv, tag } = encryptSymmetric(encryptionKey, client.creditCardNumber);
 
-        console.log("👋🏻Chipertext" ,ciphertext)
-        console.log("🔎IV" ,iv)
-        console.log("👌🏻Tag" ,tag)
+        console.log("👋🏻 Chipertext = " ,ciphertext)
+        console.log("🔎IV = " ,iv)
+        console.log("👌🏻Tag = " ,tag)
 
         // Insert the new client into the Clients table with encrypted credit card data
         const [result] = await pool.query(
