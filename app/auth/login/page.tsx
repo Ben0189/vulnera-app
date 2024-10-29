@@ -21,8 +21,6 @@ const Page = () => {
     const onSubmit = async (e : any) => {
         e.preventDefault(); // Prevent default form submission
 
-        console.log("Submitting form...");
-
         const result = await signIn("credentials", {
             username,
             password,
@@ -30,7 +28,6 @@ const Page = () => {
             callbackUrl: "/"
         });
 
-        console.log("Sign In Result:", result); // Log the result of the sign-in attempt
         if (result?.error) {
             console.error("Authentication error:", result.error);
         } else {
