@@ -55,7 +55,7 @@ export async function POST(req: NextApiRequest, res: NextApiResponse) {
         const result = await generateAndStoreRSAKeyPair();
         console.log("✅ RSA key pair is now in the database");
 
-        return NextResponse.json({ result: result }, { status: 200 });
+        return NextResponse.json({ message: 'RSA table created and key seeded successfully.' }, { status: 200 });
     } catch (error) {
         console.error("❌ Error generating or storing RSA key pair:", error);
         res.status(500).json({ message: 'Failed to generate RSA keys', error: error });
