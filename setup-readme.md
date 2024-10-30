@@ -6,5 +6,4 @@
 
 # Setup locally 
 
-1. Clone repository to [local](https://github.com/Ben0189/vulnera-app.git) 
-2. Open folder in VS code, navigate to the app directory and run "npm install"
+1. Watch the setup [video](https://www.youtube.com/watch?v=a1nC8W77j84)
