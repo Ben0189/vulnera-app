@@ -26,7 +26,7 @@ The application currently covers or plans to cover the following vulnerabilities
 <img width="630" alt="image" src="https://github.com/user-attachments/assets/23e06295-ed69-4452-96df-3e1311354245">
 
 - RSA
-<img width="644" alt="image" src="https://github.com/user-attachments/assets/d02c7d31-2964-4d65-ad92-020f3f0bacbc">
+<img width="824" alt="image" src="https://github.com/user-attachments/assets/243fed1a-d8fd-4bf8-8fff-bd1e0c0db8b5">
 
 ## Prototype
 Current Prototype only able to demonstarte by repository owner on local environment. See contact below if demonstartion needed😊 
