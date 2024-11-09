@@ -3,6 +3,9 @@
 ## Overview
 This application is designed to demonstrate software vulnerabilities for the UTS software penetration testing course. The tool is aimed at helping lecturers showcase different types of vulnerabilities and their potential impacts, making the learning experience more interactive and practical.
 
+## How To Setup 
+Here are the step by step guide to setup the application locally - https://www.youtube.com/watch?v=a1nC8W77j84
+
 ## Features
 Lecturer Demonstrations: Currently supports demonstrations of several common vulnerabilities (XXS, SQL injection).
 
@@ -17,15 +20,19 @@ The application currently covers or plans to cover the following vulnerabilities
 
 ![image](https://github.com/Ben0189/vulnera-app/assets/87377903/2f759e57-9812-4563-bb08-8c5b662e5eab)
 
-- Password Cracking (incoming)
-- and more (planned)
+- AES CBC
+
+<img width="675" alt="image" src="https://github.com/user-attachments/assets/d30a67ea-9e4c-4921-9454-addc836ba74a">
+<img width="630" alt="image" src="https://github.com/user-attachments/assets/23e06295-ed69-4452-96df-3e1311354245">
+
+- RSA
+<img width="644" alt="image" src="https://github.com/user-attachments/assets/d02c7d31-2964-4d65-ad92-020f3f0bacbc">
 
 ## Prototype
 Current Prototype only able to demonstarte by repository owner on local environment. See contact below if demonstartion needed😊 
 
 ## Current Application UI 
 ![image](https://github.com/Ben0189/vulnera-app/assets/87377903/1ef09b8e-cf24-46ce-9190-4598caa3ea27)
-
 
 ## Future Development
 Additional Vulnerabilities: Adding more types of vulnerabilities for comprehensive coverage.
